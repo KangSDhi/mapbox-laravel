@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  
+  db:
+    image: mysql:8.3.0
+    container_name: laravel-mapbox-db
+
+    ports:
+      - 3002:3306
+    
+    environment:
+      MYSQL_ROOT_PASSWORD: 'toor'
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    
+    volumes:
+      - laravel-mapbox-data:/var/lib/mysql
+
+volumes:
+  laravel-mapbox-data:
+    driver: local
